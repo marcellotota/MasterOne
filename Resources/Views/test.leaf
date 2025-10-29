@@ -1,0 +1,4 @@
+#extend("navbar")
+#export("content")
+<p>Test funzionamento blocchi</p>
+#endexport

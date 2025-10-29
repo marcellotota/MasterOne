@@ -1,0 +1,6 @@
+#extend("navbar"):
+    #export("body"):
+        <h1>About</h1>
+        <p>Questa è la pagina “About” del gestionale auto.</p>
+    #endexport
+#endextend

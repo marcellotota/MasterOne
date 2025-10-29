@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        #if(title):
+            #(title)
+        #else:
+            Gestione Parco Auto
+        #endif
+    </title>
+
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <ul class="navbar-menu">
+                <!-- Logo SVG -->
+                <li>
+                    <img src="/images/cars.svg" alt="Logo" class="navbar-logo">
+                </li>
+
+                <li>
+                    #if(currentPage == "home"):
+                        <a href="/" class="active">Home</a>
+                    #else:
+                        <a href="/">Home</a>
+                    #endif
+                </li>
+
+                <li>
+                    #if(currentPage == "autovetture"):
+                        <a href="/autovetture" class="active">Auto</a>
+                    #else:
+                        <a href="/autovetture">Auto</a>
+                    #endif
+                </li>
+
+                <li>
+                    #if(currentPage == "about"):
+                        <a href="/about" class="active">About</a>
+                    #else:
+                        <a href="/about">About</a>
+                    #endif
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        #import("body")
+    </main>
+</body>
+</html>

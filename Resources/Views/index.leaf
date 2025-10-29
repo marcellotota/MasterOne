@@ -1,12 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>#(title)</title>
-</head>
-
-<body>
-  <h1>#(title)</h1>
-</body>
-</html>
+#extend("navbar"):
+    #export("body"):
+        <h1>Benvenuto</h1>
+        <p>Questa è la home page del gestionale auto aziendale.</p>
+    #endexport
+#endextend

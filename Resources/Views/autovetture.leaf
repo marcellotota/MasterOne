@@ -1,0 +1,32 @@
+#extend("navbar"):
+    #export("body"):
+        <h1>Autovetture</h1>
+        <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Cerca un'auto...">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modello</th>
+                    <th>Targa</th>
+                    <th>Anno</th>
+                </tr>
+            </thead>
+            <tbody>
+                #for(auto in parcoAuto):
+                    <tr>
+                        <td>#(auto.marca)</td>
+                        <td>#(auto.modello)</td>
+                        <td>#(auto.targa)</td>
+                        <td>#(auto.anno)</td>
+                    </tr>
+                #endfor
+            </tbody>
+        </table>
+    #endexport
+#endextend
+<script src="/js/searchFilter.js"></script>
