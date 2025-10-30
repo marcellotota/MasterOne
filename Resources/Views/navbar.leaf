@@ -39,6 +39,14 @@
                 </li>
 
                 <li>
+                    #if(currentPage == "chilometri"):
+                        <a href="/chilometri" class="active">Chilometri</a>
+                    #else:
+                        <a href="/about">Chilometri</a>
+                    #endif
+                </li>
+                
+                                <li>
                     #if(currentPage == "about"):
                         <a href="/about" class="active">About</a>
                     #else:
