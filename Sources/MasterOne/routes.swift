@@ -34,6 +34,12 @@ func routes(_ app: Application) throws {
         return req.view.render("autovetture", context)
     }
     
+    // Chilometri page
+    app.get("chilometri") { req -> EventLoopFuture<View> in
+        let context: [String: String] = ["title": "Chilometri", "currentPage": "chilometri"]
+        return req.view.render("chilometri", context)
+    }
+    
     //Pagina Test
     app.get("test") { req in
         return req.view.render("test")
