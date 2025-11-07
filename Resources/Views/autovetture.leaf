@@ -1,6 +1,7 @@
 #extend("navbar"):
     #export("body"):
         <h1>Autovetture</h1>
+
         <input
             type="text"
             id="searchInput"
@@ -13,20 +14,25 @@
                     <th>Marca</th>
                     <th>Modello</th>
                     <th>Targa</th>
-                    <th>Anno</th>
+                    <th>Fascia Policy</th>
+                    <th>Assegnatario</th>
+                    <th>Società</th>
                 </tr>
             </thead>
             <tbody>
-                #for(auto in parcoAuto):
+                #for(auto in autovetture):
                     <tr>
                         <td>#(auto.marca)</td>
                         <td>#(auto.modello)</td>
-                        <td>#(auto.targa)</td>
-                        <td>#(auto.anno)</td>
+                        <td>#(auto.id)</td>
+                        <td>#(auto.fasciaPolicy)</td>
+                        <td>#(auto.displayName)</td>
+                        <td>#(auto.societa)</td>
                     </tr>
                 #endfor
             </tbody>
         </table>
     #endexport
 #endextend
+
 <script src="/js/searchFilter.js"></script>

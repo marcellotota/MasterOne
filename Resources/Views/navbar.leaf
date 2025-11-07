@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <title>
         #if(title):
-            #(title)
+            Gestione Parco Auto GPZ
         #else:
-            Gestione Parco Auto
+            Gestione Parco Auto GPZ
         #endif
     </title>
 
     <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/navbar.js" defer></script>
 </head>
 
 <body>
     <nav class="navbar">
-        <div class="navbar-container">
-            <ul class="navbar-menu">
-                <!-- Logo SVG -->
-                <li>
-                    <img src="/images/cars.svg" alt="Logo" class="navbar-logo">
-                </li>
+    <div class="navbar-container">
+        <!-- Logo a sinistra -->
+        <img src="/images/cars-logo.svg" alt="Logo" class="navbar-logo">
 
+        <!-- Bottone hamburger (solo su mobile) -->
+        <button class="navbar-toggle" id="navbar-toggle">☰</button>
+
+        <!-- Menu di navigazione -->
+        <ul class="navbar-menu" id="navbar-menu">
+
+            #if(isAdmin == "true"):
+                <!-- 🔹 Admin: può vedere tutto -->
                 <li>
                     #if(currentPage == "home"):
                         <a href="/" class="active">Home</a>
@@ -32,9 +38,9 @@
 
                 <li>
                     #if(currentPage == "autovetture"):
-                        <a href="/autovetture" class="active">Auto</a>
+                        <a href="/autovetture" class="active">Autovetture</a>
                     #else:
-                        <a href="/autovetture">Auto</a>
+                        <a href="/autovetture">Autovetture</a>
                     #endif
                 </li>
 
@@ -42,21 +48,72 @@
                     #if(currentPage == "chilometri"):
                         <a href="/chilometri" class="active">Chilometri</a>
                     #else:
-                        <a href="/about">Chilometri</a>
+                        <a href="/chilometri">Chilometri</a>
                     #endif
                 </li>
-                
-                                <li>
+
+                <li>
                     #if(currentPage == "about"):
                         <a href="/about" class="active">About</a>
                     #else:
                         <a href="/about">About</a>
                     #endif
                 </li>
-            </ul>
-        </div>
-    </nav>
 
+                <li>
+                    #if(currentPage == "test"):
+                        <a href="/test" class="active">Test</a>
+                    #else:
+                        <a href="/test">Test</a>
+                    #endif
+                </li>
+
+            #elseif(hasCar == "true"):
+                <!-- 🔹 Assegnatario (carUser): solo alcune pagine -->
+                <li>
+                    #if(currentPage == "home"):
+                        <a href="/" class="active">Home</a>
+                    #else:
+                        <a href="/">Home</a>
+                    #endif
+                </li>
+
+                <li>
+                    #if(currentPage == "chilometri"):
+                        <a href="/chilometri" class="active">Chilometri</a>
+                    #else:
+                        <a href="/chilometri">Chilometri</a>
+                    #endif
+                </li>
+
+                <li>
+                    #if(currentPage == "about"):
+                        <a href="/about" class="active">About</a>
+                    #else:
+                        <a href="/about">About</a>
+                    #endif
+                </li>
+
+            #else:
+                <!-- 🔹 Nessuna auto assegnata (noCar) -->
+                <li>
+                    #if(currentPage == "noCar"):
+                        <a href="/noCar" class="active">Nessuna Auto</a>
+                    #else:
+                        <a href="/noCar">Nessuna Auto</a>
+                    #endif
+                </li>
+            #endif
+
+            <!-- 🔹 Logout sempre visibile -->
+            <li>
+                <a href="/logout" class="logout-link">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="navbar-spacer"></div>
     <main class="main-content">
         #import("body")
     </main>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Parco Auto GPZ</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <img src="/images/microsoft-logo.png" alt="MS-logo" width="150" height="auto">
+        <h1>Accesso</h1>
+        <p>Accedi con il tuo account aziendale:</p>
+
+        <a href="#(authURL)">Login con Azure</a>
+    </div>
+</body>
+</html>

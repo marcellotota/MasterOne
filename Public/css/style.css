@@ -4,7 +4,7 @@ body {
     background-color: #f5f5f5;
     color: #333;
     margin: 0;
-    padding: 0;
+    padding: 0 1rem;
 }
 
 /* NAVBAR BASE */
@@ -12,35 +12,53 @@ body {
     background-color: #1f2937;
     color: white;
     padding: 1rem 0;
+    position: fixed;        /* 🔹 Fissa la navbar in alto */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* 🔹 Ombra leggera */
 }
 
-/* Contenitore interno centrato */
+/* Contenitore interno navbar */
 .navbar-container {
     max-width: 1120px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 1.5rem;
 }
 
-/* Lista orizzontale del menu */
+/* Logo */
+.navbar-logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Bottone hamburger (mobile) */
+.navbar-toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* Menu desktop */
 .navbar-menu {
     list-style: none;
     display: flex;
     align-items: center;
+    gap: 4rem;
     margin: 0;
     padding: 0;
-    gap: 2rem; /* più spazio tra le voci */
 }
 
-/* Logo SVG */
-.navbar-logo {
-    height: 50px;
-    width: auto;
-    display: block;
-}
-
-/* Link di navigazione */
+/* Link di menu */
 .navbar-menu a {
     color: white;
     text-decoration: none;
@@ -50,7 +68,6 @@ body {
     padding: 0.5rem 0;
 }
 
-/* Hover + active underline */
 .navbar-menu a::after {
     content: "";
     position: absolute;
@@ -67,12 +84,106 @@ body {
     width: 100%;
 }
 
+/* Nome utente */
+.user-name {
+  font-weight: 500;
+  color: #ececec;
+}
+
+/* === SPAZIO SOTTO LA NAVBAR (DINAMICO) === */
+.navbar-spacer {
+    height: 80px; /* desktop default */
+}
+
+@media (max-width: 768px) {
+    .navbar-spacer {
+        height: 80px; /* 🔹 spazio extra per hamburger/menu mobile */
+    }
+}
+
+/* === RESPONSIVE === */
+@media (min-width: 1200px) {
+  .navbar-container {
+    padding: 0 3rem; /* più spazio ai lati su schermi larghi */
+  }
+
+  body {
+    padding: 0 3rem; /* coerente con navbar */
+  }
+}
+
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    /* Menu mobile */
+    .navbar-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1f2937;
+        display: none;
+        padding: 1rem 1.5rem;
+        gap: 0.5rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        list-style: none;
+        z-index: 1000;
+    }
+
+    .navbar-menu.open {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .navbar-menu li {
+        text-align: left;
+        width: 100%;
+    }
+
+    .navbar-menu a {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 0;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .navbar-menu a::after {
+        display: none;
+    }
+
+    .navbar-menu a.active {
+        color: #93c5fd;
+        font-weight: 600;
+    }
+
+    body {
+        padding: 0 1rem;
+    }
+}
+
+/* === RIPRISTINO MENU DESKTOP === */
+@media (min-width: 769px) {
+    .navbar-menu {
+        display: flex !important;
+    }
+}
 
 /* Main container */
 main {
     max-width: 1120px;
     margin: 2rem auto;
-    padding: 1rem;
+    margin-top: 2rem;
+    padding: 2rem;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -101,10 +212,10 @@ table tr:nth-child(even) {
 }
 
 table tr:hover {
-    background-color: #e5e7eb; /* leggero grigio al passaggio */
+    background-color: #e5e7eb;
 }
 
-/* Campo di ricerca nella pagina Autovetture + altre */
+/* Campo di ricerca */
 .search-input {
     width: 100%;
     max-width: 300px;
@@ -118,6 +229,6 @@ table tr:hover {
 
 .search-input:focus {
     outline: none;
-    border-color: #1f2937; /* stesso colore navbar */
+    border-color: #1f2937;
     box-shadow: 0 0 4px rgba(31, 41, 55, 0.4);
 }

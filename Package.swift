@@ -17,6 +17,12 @@ let package = Package(
         .package(url: "https://github.com/vapor/leaf.git", from: "4.3.0"),
         // 🔵 Non-blocking, event-driven networking for Swift. Used for custom executors
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
+        
+        .package(url: "https://github.com/vapor/jwt-kit.git", from: "4.0.0"),
+                
+        .package(url: "https://github.com/Flight-School/AnyCodable.git", from: "0.6.7")
+
+
     ],
     targets: [
         .executableTarget(
@@ -28,7 +34,14 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
+                .product(name: "JWTKit", package: "jwt-kit"),
+                .product(name: "AnyCodable", package: "AnyCodable"),
+
             ],
+            resources: [
+                   // 🔹 Aggiungi questa riga per includere il file delle credenziali
+                   .copy("Resources")
+               ],
             swiftSettings: swiftSettings
         ),
         .testTarget(

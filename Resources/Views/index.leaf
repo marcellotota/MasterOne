@@ -1,6 +1,29 @@
 #extend("navbar"):
     #export("body"):
-        <h1>Benvenuto</h1>
+        <h1>Benvenuto, #(userName)!</h1>
         <p>Questa è la home page del gestionale auto aziendale.</p>
+
+        #if(isAdmin == "true"):
+            <div class="admin-panel">
+                <h2>Area Amministratore</h2>
+                <ul>
+                    <li>/autovettureGestisci Autovetture</a></li>
+                    <li>/chilometriReport Chilometri</a></li>
+                    <li>/utentiGestione Utenti</a></li>
+                </ul>
+            </div>
+        #else:
+            #if(hasCar == "true"):
+                <div class="user-panel">
+                    <h2>Le tue Autovetture</h2>
+                    <p>Vai alla sezione /autovettureAutovetture</a> per vedere i dettagli.</p>
+                </div>
+            #else:
+                <div class="no-car">
+                    <h2>Nessuna autovettura assegnata</h2>
+                    <p>Contatta l'amministratore per l'assegnazione.</p>
+                </div>
+            #endif
+        #endif
     #endexport
 #endextend

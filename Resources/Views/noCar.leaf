@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Portale Auto GPZ</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <h1>Nessuna autovettura assegnata</h1>
+        <p>Contatta i servizi generali per l'assegnazione.</p>
+    </main>
+</body>
+</html>
